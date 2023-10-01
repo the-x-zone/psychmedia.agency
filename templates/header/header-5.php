@@ -123,15 +123,7 @@ if($brando_enable_header == 1){
               <?php
                 if($brando_header_logo):
               ?>
-              <img alt="<?php echo get_bloginfo('name') ?>" src="<?php echo esc_url($brando_header_logo); ?>" class="verticalaside__brand__link__img" />
-              <?php
-                endif;
-                if($brando_retina):
-                if($brando_retina_width || $brando_retina_height):
-                  $brando_r_style = 'style="'.$brando_retina_width.$brando_retina_height.'"';
-                endif;
-              ?>
-              <img alt="<?php echo get_bloginfo('name') ?>" src="<?php echo esc_url($brando_retina); ?>" class="verticalaside__brand__link__img--retina" <?php echo wp_kses($brando_r_style, wp_kses_allowed_html( 'post' )); ?> />
+              <img src="<?php echo esc_url($brando_header_logo); ?>" class="verticalaside__brand__link__img" srcset="<?php echo esc_url($brando_header_logo); ?> 1x, <?php echo esc_url($brando_retina); ?> 2x" alt="<?php echo get_bloginfo('name') ?>">
               <?php
                 endif;
               ?>
