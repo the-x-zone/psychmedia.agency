@@ -41,7 +41,7 @@ if($brando_enable_header == 1){
     $brando_header_top_offset = ( isset( $brando_theme_settings['brando_header_top_offset'] ) && !empty( $brando_theme_settings['brando_header_top_offset'] ) ) ? ' data-offset='.$brando_theme_settings['brando_header_top_offset'] : ' data-offset=-59';
        
 ?>
-    <nav class="giorgio navbar no-margin-bottom alt-font without-button header-white bg-white header-vertical-center <?php echo esc_attr($brando_header_text_color);?><?php echo esc_attr( $brando_enable_non_sticky );?>"<?php echo esc_html( $brando_header_top_offset ) ?>>
+    <nav class="giorgio-archive navbar no-margin-bottom alt-font without-button header-white bg-white header-vertical-center <?php echo esc_attr($brando_header_text_color);?><?php echo esc_attr( $brando_enable_non_sticky );?>"<?php echo esc_html( $brando_header_top_offset ) ?>>
             <div class="container navigation-menu">
                 <div class="row">
                     <!-- Brand and toggle get grouped for better mobile display -->
