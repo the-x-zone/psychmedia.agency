@@ -28,6 +28,7 @@ aside.verticalaside {
 .verticalaside__menu {
   writing-mode: vertical-lr;
   text-orientation: mixed;
+  height: 100%;
 }
 
 .verticalaside__menu__nav {
