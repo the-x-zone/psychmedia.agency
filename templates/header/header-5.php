@@ -42,56 +42,17 @@ if($brando_enable_header == 1){
        
 ?>
     <aside class="verticalaside <?php echo esc_attr($brando_header_text_color);?><?php echo esc_attr( $brando_enable_non_sticky );?>"<?php echo esc_html( $brando_header_top_offset ) ?>>
-      
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="verticalaside__brand">
-          <?php
-            $brando_retina_width = $brando_retina_height = '';
-            if( isset( $brando_theme_settings['brando_retina_logo_width_general'] ) && !empty( $brando_theme_settings['brando_retina_logo_width_general'] ) ){
-              $brando_retina_width .= 'max-width:'.esc_attr($brando_theme_settings['brando_retina_logo_width_general']).'; ';
-            }elseif( isset( $brando_theme_settings['brando_retina_logo_width'] ) && !empty( $brando_theme_settings['brando_retina_logo_width'] ) ){
-              $brando_retina_width .= 'max-width:'.esc_attr($brando_theme_settings['brando_retina_logo_width']).'; ';
-            }
-            if( isset( $brando_theme_settings['brando_retina_logo_height_general'] ) && !empty( $brando_theme_settings['brando_retina_logo_height_general'] ) ){
-              $brando_retina_height .= 'height:'.esc_attr($brando_theme_settings['brando_retina_logo_height_general']).'; ';
-            }elseif( isset( $brando_theme_settings['brando_retina_logo_height'] ) && !empty( $brando_theme_settings['brando_retina_logo_height'] ) ){
-              $brando_retina_height .= 'height:'.esc_attr($brando_theme_settings['brando_retina_logo_height']).'; ';
-            }
-            $brando_r_style  = '';
-          ?>
-          <?php if(!empty($brando_header_logo) || $brando_retina){ ?>
-            <a class="verticalaside__brand__link" href="<?php echo esc_url($brando_logo_url); ?>">
-              <?php
-                if($brando_header_logo):
-              ?>
-              <img alt="<?php echo get_bloginfo('name') ?>" src="<?php echo esc_url($brando_header_logo); ?>" class="verticalaside__brand__link__img" />
-              <?php
-                endif;
-                if($brando_retina):
-                if($brando_retina_width || $brando_retina_height):
-                  $brando_r_style = 'style="'.$brando_retina_width.$brando_retina_height.'"';
-                endif;
-              ?>
-              <img alt="<?php echo get_bloginfo('name') ?>" src="<?php echo esc_url($brando_retina); ?>" class="verticalaside__brand__link__img--retina" <?php echo wp_kses($brando_r_style, wp_kses_allowed_html( 'post' )); ?> />
-              <?php
-                endif;
-              ?>
-            </a>
-            <?php }else{
-            ?>
-              <span class="verticalaside__brand__link__text"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-            <?php
-            } ?>
-        </div>
-        <?php 
-        if( $brando_enable_menu == 1 ){
-        ?>
-        <button type="button" class="navbar-toggle bg-black no-border-round collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <button type="button" class="navbar-toggle bg-black no-border-round collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+       
+        <?php 
+        if( $brando_enable_menu == 1 ){
+        ?>
+       
         <?php 
         }
         $brando_right_sec = '';
@@ -142,6 +103,45 @@ if($brando_enable_header == 1){
                 }
             ?>
         </nav> 
+        <div class="verticalaside__brand">
+          <?php
+            $brando_retina_width = $brando_retina_height = '';
+            if( isset( $brando_theme_settings['brando_retina_logo_width_general'] ) && !empty( $brando_theme_settings['brando_retina_logo_width_general'] ) ){
+              $brando_retina_width .= 'max-width:'.esc_attr($brando_theme_settings['brando_retina_logo_width_general']).'; ';
+            }elseif( isset( $brando_theme_settings['brando_retina_logo_width'] ) && !empty( $brando_theme_settings['brando_retina_logo_width'] ) ){
+              $brando_retina_width .= 'max-width:'.esc_attr($brando_theme_settings['brando_retina_logo_width']).'; ';
+            }
+            if( isset( $brando_theme_settings['brando_retina_logo_height_general'] ) && !empty( $brando_theme_settings['brando_retina_logo_height_general'] ) ){
+              $brando_retina_height .= 'height:'.esc_attr($brando_theme_settings['brando_retina_logo_height_general']).'; ';
+            }elseif( isset( $brando_theme_settings['brando_retina_logo_height'] ) && !empty( $brando_theme_settings['brando_retina_logo_height'] ) ){
+              $brando_retina_height .= 'height:'.esc_attr($brando_theme_settings['brando_retina_logo_height']).'; ';
+            }
+            $brando_r_style  = '';
+          ?>
+          <?php if(!empty($brando_header_logo) || $brando_retina){ ?>
+            <a class="verticalaside__brand__link" href="<?php echo esc_url($brando_logo_url); ?>">
+              <?php
+                if($brando_header_logo):
+              ?>
+              <img alt="<?php echo get_bloginfo('name') ?>" src="<?php echo esc_url($brando_header_logo); ?>" class="verticalaside__brand__link__img" />
+              <?php
+                endif;
+                if($brando_retina):
+                if($brando_retina_width || $brando_retina_height):
+                  $brando_r_style = 'style="'.$brando_retina_width.$brando_retina_height.'"';
+                endif;
+              ?>
+              <img alt="<?php echo get_bloginfo('name') ?>" src="<?php echo esc_url($brando_retina); ?>" class="verticalaside__brand__link__img--retina" <?php echo wp_kses($brando_r_style, wp_kses_allowed_html( 'post' )); ?> />
+              <?php
+                endif;
+              ?>
+            </a>
+            <?php }else{
+            ?>
+              <span class="verticalaside__brand__link__text"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
+            <?php
+            } ?>
+        </div>
         <?php
         if( is_active_sidebar( $brando_header_sidebar ) ){
         ?>

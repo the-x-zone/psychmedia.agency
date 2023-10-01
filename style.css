@@ -12,3 +12,12 @@
  License URI:  https://www.boost.org/users/license.html
  Tags:         brando,vertical-menu
 */
+aside.verticalaside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 60px;
+  height: 100vh;
+  background: #fff;
+}
