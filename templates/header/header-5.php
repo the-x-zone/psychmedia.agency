@@ -50,11 +50,6 @@ if($brando_enable_header == 1){
         </button>
        
         <?php 
-        if( $brando_enable_menu == 1 ){
-        ?>
-       
-        <?php 
-        }
         $brando_right_sec = '';
         if( !empty( $brando_header_sidebar ) ){
             $brando_right_sec .= ' pull-left'; 
