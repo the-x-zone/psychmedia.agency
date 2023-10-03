@@ -32,6 +32,9 @@ aside.verticalaside {
   transform: rotate(90deg);
   object-fit: scale-down;
 }
+nav.verticalaside__menu.shrink{
+  background:#fff;
+}
 .verticalaside__menu ul{
  margin:0;
  padding:0;
