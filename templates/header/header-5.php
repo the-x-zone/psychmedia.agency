@@ -7,39 +7,39 @@
 ?>
 <?php
 global $brando_theme_settings;
-$brando_options = get_option( 'brando_theme_setting' );
-$brando_enable_header = (isset($brando_options['brando_enable_header_general'])) ? $brando_options['brando_enable_header_general'] : '';
-if($brando_enable_header == 1){
-    
-    $brando_enable_menu = (isset($brando_options['brando_enable_menu']) && !empty($brando_options['brando_enable_menu'])) ? $brando_options['brando_enable_menu'] : '';
 
-    $brando_header_layout = (isset($brando_options['brando_header_layout_general']) && !empty($brando_options['brando_header_layout_general'])) ? $brando_options['brando_header_layout_general'] : $brando_options['brando_header_layout'];
-    
-    $brando_header_logo = $brando_retina = '';
-    if (isset($brando_options['brando_header_logo_general']['url']) && !empty($brando_options['brando_header_logo_general']['url'])) {
-        $brando_header_logo = $brando_options['brando_header_logo_general']['url'];
-    } else {
-        if (isset($brando_options['brando_header_logo']['url']) && !empty($brando_options['brando_header_logo']['url'])) {
-            $brando_header_logo = $brando_options['brando_header_logo']['url'];
-        }
-    }
+$brando_enable_header = brando_option('brando_enable_header');
+if($brando_enable_header == 1 || $brando_enable_header == '2'){
 
-    if (isset($brando_options['brando_retina_logo_general']['url']) && !empty($brando_options['brando_retina_logo_general']['url'])) {
-        $brando_retina = $brando_options['brando_retina_logo_general']['url'];
-    } else {
-        if (isset($brando_options['brando_retina_logo']['url']) && !empty($brando_options['brando_retina_logo']['url'])) {
-            $brando_retina = $brando_options['brando_retina_logo']['url'];
-        }
+    $brando_options = get_option( 'brando_theme_setting' );
+    if($brando_enable_header == '2'){
+        $brando_enable_header = (isset($brando_options['brando_enable_header'])) ? $brando_options['brando_enable_header'] : '';
+        if($brando_enable_header == 0)
+            return;
     }
-    
-    $brando_logo_url = (isset($brando_options['brando_logo_url_general']) && !empty($brando_options['brando_logo_url_general'])) ? $brando_options['brando_logo_url_general'] : $brando_options['brando_logo_url'];
-    $brando_header_menu = (isset($brando_theme_settings['brando_header_menu'])) ? $brando_theme_settings['brando_header_menu'] : '';
-    $brando_header_text_color = (isset($brando_theme_settings['brando_header_text_color_general']) && !empty($brando_theme_settings['brando_header_text_color_general'])) ? $brando_theme_settings['brando_header_text_color_general'] : $brando_theme_settings['brando_header_text_color'];
-    $brando_header_sidebar = (isset($brando_theme_settings['brando_header_sidebar_general']) && !empty($brando_theme_settings['brando_header_sidebar_general'])) ? $brando_theme_settings['brando_header_sidebar_general'] : $brando_theme_settings['brando_header_sidebar'];
-    $brando_enable_non_sticky = (isset($brando_theme_settings['brando_enable_sticky_general']) && $brando_theme_settings['brando_enable_sticky_general'] == '1' ) ?  '': ' non-sticky-nav';
-    $brando_call_to_action = ( isset($brando_theme_settings['brando_enable_callto_mobile_general']) && $brando_theme_settings['brando_enable_callto_mobile_general'] == '1' ) ? ' mobile-call-to-action' : ' sm-display-none';
-    $brando_header_top_offset = ( isset( $brando_theme_settings['brando_header_top_offset'] ) && !empty( $brando_theme_settings['brando_header_top_offset'] ) ) ? ' data-offset='.$brando_theme_settings['brando_header_top_offset'] : ' data-offset=-59';
-       
+    $brando_enable_menu = brando_option('brando_enable_menu');
+    $brando_header_layout = brando_option('brando_header_layout');
+    $brando_header_logo = brando_option('brando_header_logo');
+    if(is_array($brando_header_logo))
+        $brando_header_logo =  $brando_header_logo['url'];
+
+    $brando_retina = brando_option('brando_retina_logo');
+    if(is_array($brando_retina))
+        $brando_retina =  $brando_retina['url'];
+
+    $brando_logo_url = brando_option('brando_logo_url');
+
+    $brando_header_menu = brando_option('brando_header_menu');
+    if(empty($brando_header_menu))
+        $brando_header_menu = (isset($brando_theme_settings['brando_header_menu'])) ? $brando_theme_settings['brando_header_menu'] : '';
+
+    $brando_header_text_color = ' '.brando_option('brando_header_text_color');
+    $brando_header_sidebar = brando_option('brando_header_sidebar');
+    $brando_sticky = ( brando_option('brando_enable_sticky') ) ? '1' : '0';
+    $brando_enable_non_sticky = ($brando_sticky== '1' ) ? '': ' non-sticky-nav'; 
+    $brando_call_to_action = ( brando_option('brando_enable_callto_mobile') == '1' ) ? ' mobile-call-to-action' : ' sm-display-none';  
+    $enable_h1_in_front_page = ( isset( $brando_theme_settings['enable_h1_in_front_page'] ) && $brando_theme_settings['enable_h1_in_front_page'] ) ? $brando_theme_settings['enable_h1_in_front_page'] : '';
+    $brando_header_top_offset = ( isset( $brando_theme_settings['brando_header_top_offset'] ) && !empty( $brando_theme_settings['brando_header_top_offset'] ) ) ? ' data-offset='.$brando_theme_settings['brando_header_top_offset'] : ' data-offset=-59';            
 ?>
     <aside class="verticalaside <?php echo esc_attr($brando_header_text_color);?><?php echo esc_attr( $brando_enable_non_sticky );?>"<?php echo esc_html( $brando_header_top_offset ) ?>>
     <button type="button" class="navbar-toggle-v no-border-round collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -48,8 +48,7 @@ if($brando_enable_header == 1){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-       
-        <?php 
+               <?php 
         $brando_right_sec = '';
         if( !empty( $brando_header_sidebar ) ){
             $brando_right_sec .= ' pull-left'; 
