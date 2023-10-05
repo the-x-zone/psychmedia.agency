@@ -81,6 +81,10 @@ aside.verticalaside {
      height: 100%;
      align-items: center;
      justify-content: space-around;
+     padding: 20px 0;
+ }
+ .verticalaside__menu__nav .menu-item{
+  padding:10px 0;
  }
   .verticalaside__menu {
    writing-mode: vertical-lr;
