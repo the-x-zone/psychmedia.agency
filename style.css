@@ -18,6 +18,7 @@ aside.verticalaside {
   right: 0;
   z-index: 10;
   height: 100vh;
+  height: -webkit-fill-available;
   background: #fff;
   display: flex;
   flex-direction: column;
