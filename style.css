@@ -64,7 +64,7 @@ aside.verticalaside {
     margin-top: 4px
 }
  .verticalaside__menu {
-   height: 100vh;
+   height: 60vh;
    background-color: #fff !important;
  }
 .menu-menu-principal-container,.menu-menu-principal-container ul{
